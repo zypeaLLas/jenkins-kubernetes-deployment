@@ -11,7 +11,9 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/zypeaLLas/jenkins-kubernetes-deployment.git'
+         git credentialsId: 'github-credentials', 
+			git 'https://github.com/zypeaLLas/jenkins-kubernetes-deployment.git',
+            branch: 'main'  // Đảm bảo tên branch đúng
       }
     }
 
