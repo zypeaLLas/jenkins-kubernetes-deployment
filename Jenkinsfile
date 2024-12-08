@@ -37,7 +37,18 @@ pipeline {
         }
       }
     }
-
+	
+	stage('Deploying React.js container to Kubernetes') {
+      steps {
+        script {
+            withEnv(["KUBECONFIG=$HOME/.kube/config"]) {
+                kubernetesDeploy(
+                    configs: "deployment.yaml,service.yaml" 
+                )
+            }
+        }
+      }
+    }
     
 
   }
