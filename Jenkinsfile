@@ -11,7 +11,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-         git credentialsId: 'github-credentials', 
+        git credentialsId: 'github-credentials',
 			url: 'https://github.com/zypeaLLas/jenkins-kubernetes-deployment.git',
             branch: 'main'  // Đảm bảo tên branch đúng
       }
@@ -38,17 +38,7 @@ pipeline {
       }
     }
 
-    stage('Deploying React.js container to Kubernetes') {
-      steps {
-        script {
-            withEnv(["KUBECONFIG=$HOME/.kube/config"]) {
-                kubernetesDeploy(
-                    configs: "deployment.yaml,service.yaml" 
-                )
-            }
-        }
-      }
-    }
+    
 
   }
 
