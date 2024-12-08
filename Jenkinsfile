@@ -43,7 +43,7 @@ pipeline {
         script {
             withEnv(["KUBECONFIG=$HOME/.kube/config"]) {
                 kubernetesDeploy(
-                    configs: ['deployment.yaml', 'service.yaml']
+                    configs: "deployment.yaml,service.yaml" 
                 )
             }
         }
