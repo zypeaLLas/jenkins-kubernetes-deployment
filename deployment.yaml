@@ -5,7 +5,6 @@ metadata:
   labels:
     app: react-app
 spec:
-  serviceAccountName: my-service-account
   replicas: 2 #The number of pods to be created in the Kubernetes cluster for the React.js application container
   selector:
     matchLabels:

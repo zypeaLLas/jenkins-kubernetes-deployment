@@ -42,8 +42,11 @@ pipeline {
       steps {
         script {
 			withCredentials([file(credentialsId: 'mykubeconfig', variable: 'KUBECONFIG')]) {
-                        sh "kubectl apply -f deployment.yaml -f service.yaml --kubeconfig=$KUBECONFIG"
-            }
+                        // Sử dụng withEnv để tránh String interpolation
+                        withEnv(["KUBECONFIG=$KUBECONFIG"]) {
+                            sh 'kubectl apply -f deployment.yaml -f service.yaml'
+                        }
+                    }
         }
       }
     }
